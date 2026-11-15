@@ -1,0 +1,16 @@
+{
+  "FLOOD_WATCH": "A flood watch is in effect as flooding is possible. Be prepared to move to higher ground.",
+  "FLOOD_WARNING": "Flood warning in this area until %s. Seek higher ground on foot immediately.",
+
+  "THUNDERSTORM_WATCH": "A thunderstorm watch is in effect for Poliboro Beach until %s.",
+  "THUNDERSTORM_WARNING": "A thunderstorm warning has been issued to Poliboro Beach and the surrounding areas.",
+
+  "WINTER_STORM_WATCH": "Winter storms may occur in the area of Poliboro Beach on %s.",
+  "WINTER_STORM_WARNING": "A winter storm warning has been issued. Do not attempt to travel until conditions improve.",
+
+  "HURRICANE_WATCH": "A hurricane watch is in effect for the Poliboro Beach and surrounding areas.",
+  "HURRICANE_WARNING": "Hurricane warning in this area until %s. Seek refuge.",
+
+  "HEAT_WAVE_WATCH": "Abnormal high temperatures are expected to hit Poliboro Beach on %s. Stay indoors if possible.",
+  "HEAT_WAVE_WARNING": "Heat wave warning caused by abnormally high temperatures. Avoid being outdoors."
+}

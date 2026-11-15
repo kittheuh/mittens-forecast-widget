@@ -1,0 +1,142 @@
+{
+  "DAY_CLEAR":  [
+    "Wear sunscreen. Or don't. I can't make you.",
+    "Ideal weather to go to the beach.",
+    "Typical day with absolutely nothing going on.",
+    "If you're into using umbrellas, today is a day to do so.",
+    "Returning due to popular demand; the sun."
+  ],
+
+  "DAY_PARTLY_CLOUDY": [
+    "Perfect day for a swim.",
+    "You could get by with less sunscreen today.",
+    "This will probably do."
+  ],
+
+  "DAY_MOSTLY_CLOUDY":  [
+    "You don't have to wear sunscreen. Not like you would anyways.",
+    "Now this may look like a cloudy day with some sun peaking out. I can assure you, you'll get the sun blasting at you.",
+    "I'm not going to begin explaining how this works."
+  ],
+
+  "NIGHT_CLEAR":  [
+    "The moon looks nice outside.",
+    "About as average as the night can get.",
+    "There's sunscreen, but is there such thing as moonscreen?"
+  ],
+
+  "NIGHT_PARTLY_CLOUDY": [
+    "It's a bit late for for a swim.",
+    "I don't think you'll need sunscreen for this.",
+    "This'll do."
+  ],
+
+  "NIGHT_MOSTLY_CLOUDY":  [
+    "Good luck star-gazing.",
+    "Ah. It's gonna be really dark out.",
+    "It might be cold outside."
+  ],
+
+  "CLOUDY": [
+    "I know Chicken Little told you it was but the sun is not, in fact, vanishing forever.",
+    "Someone out there probably feels really sad. It'll get better.",
+    "You could get away with not wearing sunscreen today."
+  ],
+
+  "THUNDERSTORM":  [
+    "Use an umbrella. On second thought, don't.",
+    "It may seem like a perfect time to go jump in puddles. Good luck with that.",
+    "Thunder thunder go away? Is that even a phrase.",
+    "Heard someone is an aspiring lightning strike victim. I don't recommend that.",
+    "Careful taking cover under trees, lightning can easily topple them.",
+    "If you're scared of the thunder, don't worry. I am too.",
+    "No, getting struck by lightning doesn't give you superpowers.",
+    "My antlers do not work as lightning rods, please stop asking.",
+    "Whatever thunder god must've woken up on the wrong side today.",
+    "What are the odds of lightning striking the same place twice anyway?"
+  ],
+
+  "RAIN": [
+    "Rain rain go away or something.",
+    "Umbrella fans will love this.",
+    "You'll get your fur wet easily."
+  ],
+
+  "SHOWERS":  [
+    "I know some of you need this.",
+    "This will probably affect the trout population."
+  ],
+
+  "DRIZZLE": [
+    "It's like it isn't even raining outside.",
+    "I know someone's gonna be using an umbrella.",
+    "If you're into using umbrellas, well, go for it."
+  ],
+
+  "FREEZING_DRIZZLE": [
+    "Just some extremely light snowfall, nothing of importance.",
+    "It's cold enough for snow to build up."
+  ],
+
+  "ICE_COLD_DRIZZLE": [
+    "We didn't start the snowfall, it was always falling since the day started.",
+    "Now, it's gonna get a bit cold, but that's okay."
+  ],
+
+  "COLD_DRIZZLE": [
+    "It's gonna get a bit chilly, make sure you wear a jacket.",
+    "Not enough snow to build a snowman. Good luck."
+  ],
+
+  "BLIZZARD": [
+    "Now's a good time to wear something similar to me.",
+    "Look, I know half of this city wears no footwear, but this is one of the times I advise putting some shoes on.",
+    "That winter storm warning isn't a joke."
+  ],
+
+  "SNOWSTORM":  [
+    "It'll start looking like Snow White outside but oh well.",
+    "Don't eat the yellow snow. Or any snow for that matter.",
+    "Perfect weather to read a book by a fire."
+  ],
+
+  "SNOW": [
+    "Not much to see here, just a couple of snowflakes.",
+    "Have fun making snow angels."
+  ],
+
+  "DROUGHT":  [
+    "Everyone in McKinney is dead.",
+    "Like, carry more water bottles?",
+    "Oh [BLEEP], that's really bad.",
+    "Now's a great time to use an air conditioner.",
+    "At least put some sandals on today, its hot enough that it'll burn your paws right off."
+  ],
+
+  "FLOOD": [
+    "Try to avoid entering the flood waters.",
+    "Don't underestimate a flood! Keep your guard up!",
+    "Don't drive! These waters could easily kill a vehicle."
+  ],
+
+  "HURRICANE": [
+    "I wouldn't recommend you go fishing right now at all.",
+    "Looking at some high wind speeds or something. Wear a jacket.",
+    "For the love of the PolyBot team, do not use an umbrella.",
+    "This will greatly affect the trout population.",
+    "Hey, don't ignore that warning."
+  ],
+
+  "FOGGY": [
+    "They say it's been coming for a while now.",
+    "If you've ever wanted to taste a cloud, now's your chance.",
+    "You're lucky I managed to get to the studio today, I could barely see my own arms.",
+    "If you get lost in the fog, the best course of action is to stay where you are. Probably.",
+    "Be careful, you never know what's lurking in the fog.",
+    "I almost said 'frog' instead of 'fog' just now.",
+    "Why don't they just get a big fan and blow it all away?",
+    "Make sure to wear bright colors, like a high-vis vest! That'll make sure people know you're there.",
+    "Perfect weather for hide-and-seek. Unless you're the seeker.",
+    "Pay extra attention when crossing the street. It may be hard for drivers to spot pedestrians."
+  ]
+}
