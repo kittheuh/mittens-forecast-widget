@@ -29,6 +29,6 @@ Ensure you have at least Java 21 installed beforehand.
 ## Credits
 - [Open-Meteo](https://open-meteo.com/) - Forecast Data
 - [olliedid_that](https://guns.lol/olliedid_that) - Mittens sprite & Weather icons
-- [tallcakes](https://tallcakes.straw.page) - Forecast backgrounds & Weather overlays
+- [tallcakes](https://tallcakes.neocities.org/) - Forecast backgrounds & Weather overlays
 - [loreleidawitch](https://necromancyfordummies.straw.page/) - Aided in writing additional dialogue quips for Mittens
 
