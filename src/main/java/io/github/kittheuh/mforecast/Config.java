@@ -24,7 +24,7 @@ public class Config {
             slowerAnim;
     public static boolean useLastLocation = true, drawMittens = true, playSfx = true, drawLocalClock = true, hideToTray = true,
             resizeToFit = true;
-    public static int lastLocX, lastLocY, lastLocW, lastLocH, quipFrequency = 2, windowTransparency = 100;
+    public static int lastLocX, lastLocY, lastLocW = 810, lastLocH = 496, quipFrequency = 2, windowTransparency = 100;
     public static double lastLocScale = 1;
     public static ForecastFrequency frequency = ForecastFrequency.FIFTEEN_MIN;
 

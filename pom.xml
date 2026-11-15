@@ -6,7 +6,7 @@
 
     <groupId>io.github.kittheuh.mforecast</groupId>
     <artifactId>MittensForecast</artifactId>
-    <version>0.9.5</version>
+    <version>0.9.6</version>
 
     <properties>
         <mainClass>io.github.kittheuh.mforecast.MittensMain</mainClass>
