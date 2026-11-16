@@ -16,6 +16,7 @@ import java.awt.image.BufferedImage;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
 import java.util.ArrayList;
+import java.util.EnumMap;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicBoolean;
@@ -24,6 +25,7 @@ public class ForecastCanvas extends JPanel {
     private static final Dimension PREFERRED_SIZE = new Dimension(810, 496);
     public static final Color TRANSPARENT_BLACK = new Color(0x66000000, true);
 
+    private final EnumMap<ForecastFrequency, JRadioButtonMenuItem> cmButtons = new EnumMap<>(ForecastFrequency.class);
     private final ForecastWidget parent;
 
     // Forecast
@@ -68,10 +70,9 @@ public class ForecastCanvas extends JPanel {
         AsyncUtil.SCHEDULED_SERVICE.scheduleAtFixedRate(this::refreshForecast, 0, 5, TimeUnit.MINUTES);
     }
 
-
-
     private void initPopup() {
         JPopupMenu popupMenu = new JPopupMenu(parent.getName());
+
 
         var popup_buttonGroup = new ButtonGroup();
         for (ForecastFrequency frequency : ForecastFrequency.values()) {
@@ -81,6 +82,7 @@ public class ForecastCanvas extends JPanel {
 
             popupMenu.add(radioButton);
             popup_buttonGroup.add(radioButton);
+            cmButtons.put(frequency, radioButton);
         }
         popupMenu.addSeparator();
 
@@ -128,6 +130,9 @@ public class ForecastCanvas extends JPanel {
         Config.frequency = frequency;
         Config.scheduleSave();
         MittensMain.settingsFrame().updateForecastFrequency();
+
+        JRadioButtonMenuItem item = cmButtons.get(frequency);
+        if (item != null) item.setSelected(true);
 
         displayLoadingMessage = true;
         repaint();

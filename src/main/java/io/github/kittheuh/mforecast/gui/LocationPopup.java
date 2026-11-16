@@ -31,7 +31,7 @@ public class LocationPopup extends JDialog {
                 if (openForecastOnClose) {
                     JOptionPane.showMessageDialog(MittensMain.settingsFrame(), "You can always change the forecast location again by opening the settings!\nThere are two ways to open the settings:\n1. Right click on the Forecast Widget, then click on 'Settings'\n2. Right click on the tray icon, and click on 'Open Settings'.",
                             Constants.APP_NAME,
-                            JOptionPane.INFORMATION_MESSAGE
+                            JOptionPane.PLAIN_MESSAGE
                     );
                     MittensMain.forecastWidget().setVisible(true);
                 }
@@ -39,9 +39,7 @@ public class LocationPopup extends JDialog {
         });
 
         var cancelButton = new JButton("Close Without Saving");
-        cancelButton.addActionListener(e -> {
-            dispose();
-        });
+        cancelButton.addActionListener(e -> dispose());
 
         saveButton.setEnabled(false);
         searchCityField = new JTextField(Config.locationCityName, 30);

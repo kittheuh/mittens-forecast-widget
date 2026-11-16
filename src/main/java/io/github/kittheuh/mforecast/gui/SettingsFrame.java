@@ -83,9 +83,7 @@ public class SettingsFrame extends JFrame {
     private Box createForecastBox() {
         updateLocationDisplay();
         var button_updateLatLon = new JButton("Update Location");
-        button_updateLatLon.addActionListener(e -> {
-            new LocationPopup(false);
-        });
+        button_updateLatLon.addActionListener(e -> new LocationPopup(false));
 
         var label_attribution = new JLabel("Weather data by Open-Meteo.com");
         label_attribution.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
@@ -106,18 +104,16 @@ public class SettingsFrame extends JFrame {
             }
         });
 
-        var toggle_use24HrFmt = new JCheckBox("Use 24 Hour Format");
+        var toggle_use24HrFmt = new JCheckBox("Use 24 Hour Format", Config.use24HrFmt);
         toggle_use24HrFmt.setToolTipText("Display times in the 24-hour format (or military time).");
-        toggle_use24HrFmt.setSelected(Config.use24HrFmt);
         toggle_use24HrFmt.addActionListener(e -> {
             Config.use24HrFmt = toggle_use24HrFmt.isSelected();
             repaintForecast();
             Config.scheduleSave();
         });
 
-        var toggle_useFahrenheit = new JCheckBox("Temperature Uses Fahrenheit");
+        var toggle_useFahrenheit = new JCheckBox("Temperature Uses Fahrenheit", Config.useFahrenheit);
         toggle_useFahrenheit.setToolTipText("Display temperature in Fahrenheit instead of Celsius.");
-        toggle_useFahrenheit.setSelected(Config.useFahrenheit);
         toggle_useFahrenheit.addActionListener(e -> {
             Config.useFahrenheit = toggle_useFahrenheit.isSelected();
             repaintForecast();
@@ -163,9 +159,8 @@ public class SettingsFrame extends JFrame {
             Config.scheduleSave();
         });
 
-        var toggle_drawMittens = new JCheckBox("Draw Mittens");
+        var toggle_drawMittens = new JCheckBox("Draw Mittens", Config.drawMittens);
         toggle_drawMittens.setToolTipText("Toggle showing Mittens on the forecast widget.");
-        toggle_drawMittens.setSelected(Config.drawMittens);
         toggle_drawMittens.addActionListener(e -> {
             Config.drawMittens = toggle_drawMittens.isSelected();
             spinner_quipFrequency.setEnabled(Config.drawMittens);
@@ -173,34 +168,30 @@ public class SettingsFrame extends JFrame {
             Config.scheduleSave();
         });
 
-        var toggle_playSfx = new JCheckBox("Play Sound Effects");
+        var toggle_playSfx = new JCheckBox("Play Sound Effects", Config.playSfx);
         toggle_playSfx.setToolTipText("Whether to play sound effects for specific actions.");
-        toggle_playSfx.setSelected(Config.playSfx);
         toggle_playSfx.addActionListener(e -> {
             Config.playSfx = toggle_playSfx.isSelected();
             Config.scheduleSave();
         });
 
-        var toggle_slowerAnim = new JCheckBox("Slower Animation");
+        var toggle_slowerAnim = new JCheckBox("Slower Animation", Config.slowerAnim);
         toggle_slowerAnim.setToolTipText("Animation runs at 4 FPS by default. Enable to run at 2 FPS instead.");
-        toggle_slowerAnim.setSelected(Config.slowerAnim);
         toggle_slowerAnim.addActionListener(e -> {
             Config.slowerAnim = toggle_slowerAnim.isSelected();
             Config.scheduleSave();
         });
 
-        var toggle_hideToTray = new JCheckBox("Hide to System Tray");
+        var toggle_hideToTray = new JCheckBox("Hide to System Tray", Config.hideToTray);
         toggle_hideToTray.setToolTipText("When enabled, closing the widget will make it run in the background. Disable this to make closing the widget instead exit entirely. You can always exit directly via the \"Quit\" buttons on the tray icon or the forecast widget right click menu.");
-        toggle_hideToTray.setSelected(Config.hideToTray);
         toggle_hideToTray.addActionListener(e -> {
             Config.hideToTray = toggle_hideToTray.isSelected();
             MittensMain.forecastWidget().setDefaultCloseOperation(Config.hideToTray ? HIDE_ON_CLOSE : EXIT_ON_CLOSE);
             Config.scheduleSave();
         });
 
-        var toggle_useLastLocation = new JCheckBox("Persistent Location");
+        var toggle_useLastLocation = new JCheckBox("Persistent Location", Config.useLastLocation);
         toggle_useLastLocation.setToolTipText("If enabled, the widget will save its current position and size, so it persist throughout restarts.");
-        toggle_useLastLocation.setSelected(Config.useLastLocation);
         toggle_useLastLocation.addActionListener(e -> {
             Config.useLastLocation = toggle_useLastLocation.isSelected();
             repaintForecast();
@@ -210,9 +201,8 @@ public class SettingsFrame extends JFrame {
             else Config.scheduleSave();
         });
 
-        var toggle_resizeToFit = new JCheckBox("Auto Resize to Fit");
+        var toggle_resizeToFit = new JCheckBox("Auto Resize to Fit", Config.resizeToFit);
         toggle_resizeToFit.setToolTipText("If enabled, the widget will automatically resize itself to remove empty space. This won't apply when maximized or in fullscreen mode.");
-        toggle_resizeToFit.setSelected(Config.resizeToFit);
         toggle_resizeToFit.addActionListener(e -> {
             Config.resizeToFit = toggle_resizeToFit.isSelected();
             Config.scheduleSave();
@@ -231,9 +221,8 @@ public class SettingsFrame extends JFrame {
             Config.scheduleSave();
         });
 
-        var toggle_undecorated = new JCheckBox("Enable Borderless Forecast");
+        var toggle_undecorated = new JCheckBox("Enable Borderless Forecast", Config.undecorated);
         toggle_undecorated.setToolTipText("Remove the window borders from the forecast widget. Use the arrow keys to move the window around in this state.");
-        toggle_undecorated.setSelected(Config.undecorated);
         toggle_undecorated.addActionListener(e -> {
             Config.undecorated = toggle_undecorated.isSelected();
             slider_windowTransparency.setEnabled(Config.undecorated);
@@ -242,13 +231,27 @@ public class SettingsFrame extends JFrame {
 
         });
 
-        var toggle_alwaysOnTop = new JCheckBox("Always On Top");
+        var toggle_alwaysOnTop = new JCheckBox("Always On Top", Config.alwaysOnTop);
         toggle_alwaysOnTop.setToolTipText("Toggle the forecast widget staying on top of every other window.");
-        toggle_alwaysOnTop.setSelected(Config.alwaysOnTop);
         toggle_alwaysOnTop.addActionListener(e -> {
             Config.alwaysOnTop = toggle_alwaysOnTop.isSelected();
             MittensMain.forecastWidget().setAlwaysOnTop(Config.alwaysOnTop);
             Config.scheduleSave();
+        });
+
+        var toggle_updateChecker = new JCheckBox("Check for Updates", Config.checkForUpdates);
+        toggle_updateChecker.setToolTipText("Enable automatically checking for updates whenever the app starts.");
+        toggle_updateChecker.addActionListener(e -> {
+            Config.checkForUpdates = toggle_updateChecker.isSelected();
+            Config.scheduleSave();
+        });
+
+        var button_restoreSize = new JButton("Restore Original Size");
+        button_restoreSize.setToolTipText("Restore the widget to its initial starting size (810x496)");
+        button_restoreSize.addActionListener(e -> {
+            ForecastWidget widget = MittensMain.forecastWidget();
+            widget.forecastCanvas().setPreferredSize(new Dimension(810, 496));
+            widget.pack();
         });
 
         Box box = Box.createVerticalBox();
@@ -269,6 +272,7 @@ public class SettingsFrame extends JFrame {
         box.add(new JSeparator(JSeparator.HORIZONTAL));
         box.add(createHeaderLabel("General"));
 
+        box.add(toggle_updateChecker);
         box.add(toggle_hideToTray);
         box.add(toggle_useLastLocation);
         box.add(toggle_resizeToFit);
@@ -307,6 +311,8 @@ public class SettingsFrame extends JFrame {
             });
             box.add(toggle_launchOnStartUp);
         }
+
+        box.add(button_restoreSize);
 
         return box;
     }

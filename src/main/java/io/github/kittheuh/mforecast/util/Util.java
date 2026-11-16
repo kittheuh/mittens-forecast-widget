@@ -3,10 +3,7 @@ package io.github.kittheuh.mforecast.util;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonParser;
-import io.github.kittheuh.mforecast.Config;
-import io.github.kittheuh.mforecast.Constants;
-import io.github.kittheuh.mforecast.WeatherOverlay;
-import io.github.kittheuh.mforecast.WeatherType;
+import io.github.kittheuh.mforecast.*;
 import io.github.kittheuh.mforecast.api.MeteoForecast;
 
 import javax.imageio.ImageIO;
@@ -16,6 +13,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.URI;
+import java.net.URISyntaxException;
 import java.net.URLConnection;
 import java.nio.file.*;
 import java.time.LocalDate;
@@ -86,13 +84,20 @@ public class Util {
     public static boolean writeAutoLaunchFile() {
         Path path = Paths.get("./autostart.bat");
 
-        String currJarPath = System.getProperty("user.dir") + FileSystems.getDefault().getSeparator() + System.getProperty("java.class.path");
-
         try {
+            // https://mkyong.com/java/java-get-the-name-or-path-of-a-running-jar-file/
+            String jarPath = MittensMain.class
+                    .getProtectionDomain()
+                    .getCodeSource()
+                    .getLocation()
+                    .toURI()
+                    .getPath();
+            if (jarPath.startsWith("/")) jarPath = jarPath.substring(1);
+
             Files.writeString(path, "@runmode:hide%n@echo off%nstart /min /d %s javaw -jar %s".formatted(
-                    System.getProperty("user.dir"), currJarPath)
+                    System.getProperty("user.dir"), jarPath)
             );
-        } catch (IOException e) {
+        } catch (IOException | URISyntaxException e) {
             LOGGER.log(Level.WARNING, "Could not write autostart.bat", e);
             return false;
         }
@@ -233,10 +238,6 @@ public class Util {
 
     public static double celsiusesToFahrenheit(double celsius) {
         return celsius * 9 / 5 + 32;
-    }
-
-    public static boolean treatFoggy(float visInMeters) {
-        return visInMeters != -1 && visInMeters <= 400;
     }
 
     public static String weatherCodeToFriendly(int code) {

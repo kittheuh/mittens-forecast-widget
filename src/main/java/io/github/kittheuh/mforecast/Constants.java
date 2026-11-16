@@ -2,6 +2,7 @@ package io.github.kittheuh.mforecast;
 
 import io.github.kittheuh.mforecast.util.SFX;
 import io.github.kittheuh.mforecast.util.Spritesheet;
+import io.github.kittheuh.mforecast.util.UpdateUtil;
 import io.github.kittheuh.mforecast.util.Util;
 
 import java.awt.Color;
@@ -65,5 +66,9 @@ public class Constants {
         VERSION = version;
         // SFXs must init after version as they rely on that field to determine loading as a file or from ClassLoader
         SFX_QUIP = new SFX("assets/quip.wav");
+    }
+
+    public static UpdateUtil.Version getVersion() {
+        return UpdateUtil.toVersion(VERSION);
     }
 }

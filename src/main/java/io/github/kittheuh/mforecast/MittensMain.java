@@ -5,20 +5,20 @@ import io.github.kittheuh.mforecast.gui.ForecastWidget;
 import io.github.kittheuh.mforecast.gui.LocationPopup;
 import io.github.kittheuh.mforecast.gui.SettingsFrame;
 import io.github.kittheuh.mforecast.util.AsyncUtil;
+import io.github.kittheuh.mforecast.util.UpdateUtil;
 import io.github.kittheuh.mforecast.util.Util;
 
 import javax.imageio.ImageIO;
 import javax.swing.JOptionPane;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
-import java.awt.AWTException;
-import java.awt.PopupMenu;
-import java.awt.SystemTray;
-import java.awt.TrayIcon;
+import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.logging.Level;
@@ -56,6 +56,25 @@ public class MittensMain {
         Constants.VERSION.length(); // load constants
         Config.loadFromConfig();
 
+        if (Config.checkForUpdates) {
+            UpdateUtil.Version newVersion = UpdateUtil.checkForUpdates();
+            UpdateUtil.Version currentVersion = Constants.getVersion();
+
+            // skip update check if DEV or fail
+            if (newVersion != null && currentVersion != null && currentVersion.isOlder(newVersion)) {
+                int option = JOptionPane.showConfirmDialog(settingsFrame(), "An update is available!\n\nCurrent version: v%s\nNew Version: v%s\n\nPress OK to visit the download page, or cancel to ignore.".formatted(currentVersion, newVersion),
+                        Constants.APP_NAME, JOptionPane.OK_CANCEL_OPTION, JOptionPane.INFORMATION_MESSAGE);
+                if (option == JOptionPane.OK_OPTION) {
+                    try {
+                        Desktop.getDesktop().browse(new URI("https://github.com/kittheuh/mittens-forecast-widget/releases"));
+                    } catch (IOException | URISyntaxException e) {
+                        LOGGER.warning("Failed to open update URL");
+                        JOptionPane.showMessageDialog(settingsFrame(), "Failed to open the download page, sorry!\n\nhttps://github.com/kittheuh/mittens-forecast-widget/releases", Constants.APP_NAME, JOptionPane.ERROR_MESSAGE);
+                    }
+                }
+            }
+        }
+
         initTrayIcon();
 
         if (!Config.locationSet) {
@@ -63,7 +82,14 @@ public class MittensMain {
 
             int option = JOptionPane.showConfirmDialog(settingsFrame(), message, Constants.APP_NAME, JOptionPane.OK_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE);
             if (option == JOptionPane.OK_OPTION) new LocationPopup(true);
-            else forecastWidget().setVisible(true);
+            else {
+                // canceling would've skipped the tip on how to open settings
+                JOptionPane.showMessageDialog(settingsFrame(), "You can always set the forecast location later by opening the settings.\nThere are two ways to open the settings:\n1. Right click on the Forecast Widget, then click on 'Settings'\n2. Right click on the tray icon, and click on 'Open Settings'.",
+                        Constants.APP_NAME,
+                        JOptionPane.PLAIN_MESSAGE
+                );
+                forecastWidget().setVisible(true);
+            }
         } else {
 //            settingsFrame().setVisible(true);
             forecastWidget().setVisible(true);

@@ -23,7 +23,7 @@ public class Config {
     public static boolean locationSet, closeNoticeShown, use24HrFmt, useFahrenheit, alwaysOnTop, undecorated, autoLaunch,
             slowerAnim;
     public static boolean useLastLocation = true, drawMittens = true, playSfx = true, drawLocalClock = true, hideToTray = true,
-            resizeToFit = true;
+            resizeToFit = true, checkForUpdates = true;
     public static int lastLocX, lastLocY, lastLocW = 810, lastLocH = 496, quipFrequency = 2, windowTransparency = 100;
     public static double lastLocScale = 1;
     public static ForecastFrequency frequency = ForecastFrequency.FIFTEEN_MIN;
@@ -53,6 +53,7 @@ public class Config {
             if (prop.containsKey("pref.hide-to-tray")) hideToTray = Boolean.parseBoolean(prop.getProperty("pref.hide-to-tray"));
             if (prop.containsKey("pref.auto-launch")) autoLaunch = Boolean.parseBoolean(prop.getProperty("pref.auto-launch"));
             if (prop.containsKey("pref.resize-to-fit")) resizeToFit = Boolean.parseBoolean(prop.getProperty("pref.resize-to-fit"));
+            if (prop.containsKey("do-update-checks")) checkForUpdates = Boolean.parseBoolean(prop.getProperty("do-update-checks"));
 
             if (prop.containsKey("pref.always-on-top")) alwaysOnTop = Boolean.parseBoolean(prop.getProperty("pref.always-on-top"));
             if (prop.containsKey("pref.draw-mittens")) drawMittens = Boolean.parseBoolean(prop.getProperty("pref.draw-mittens"));
@@ -83,6 +84,7 @@ public class Config {
     public static void saveToConfig() {
         Properties prop = new Properties();
         prop.setProperty("version", Constants.VERSION);
+        prop.setProperty("do-update-checks", Boolean.toString(checkForUpdates));
 
         prop.setProperty("location.latitude", Float.toString(locationLatitude));
         prop.setProperty("location.longitude", Float.toString(locationLongitude));
