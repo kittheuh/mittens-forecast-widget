@@ -54,6 +54,7 @@ public class Config {
             if (prop.containsKey("pref.auto-launch")) autoLaunch = Boolean.parseBoolean(prop.getProperty("pref.auto-launch"));
             if (prop.containsKey("pref.resize-to-fit")) resizeToFit = Boolean.parseBoolean(prop.getProperty("pref.resize-to-fit"));
             if (prop.containsKey("do-update-checks")) checkForUpdates = Boolean.parseBoolean(prop.getProperty("do-update-checks"));
+            if (prop.containsKey("pref.play-sfx")) playSfx = Boolean.parseBoolean(prop.getProperty("pref.play-sfx"));
 
             if (prop.containsKey("pref.always-on-top")) alwaysOnTop = Boolean.parseBoolean(prop.getProperty("pref.always-on-top"));
             if (prop.containsKey("pref.draw-mittens")) drawMittens = Boolean.parseBoolean(prop.getProperty("pref.draw-mittens"));
@@ -101,6 +102,7 @@ public class Config {
         prop.setProperty("pref.hide-to-tray", Boolean.toString(hideToTray));
         prop.setProperty("pref.auto-launch", Boolean.toString(autoLaunch));
         prop.setProperty("pref.resize-to-fit", Boolean.toString(resizeToFit));
+        prop.setProperty("pref.play-sfx", Boolean.toString(playSfx));
         prop.setProperty("pref.frequency", frequency.name());
         prop.setProperty("pref.quip-frequency", Integer.toString(quipFrequency));
 
